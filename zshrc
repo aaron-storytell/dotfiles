@@ -28,10 +28,10 @@ antigen apply
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -51,25 +51,24 @@ antigen apply
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-
 # -------------------------------------------
 # User configuration
 # -------------------------------------------
 
-# $PATH
+source $HOME/dotfiles/.path
 source $HOME/dotfiles/.exports
-source $ZSH/oh-my-zsh.sh
-source ~/dotfiles/.alias
+source ~/dotfiles/.alias        # my commmand aliases
+source $ZSH/oh-my-zsh.sh        # normal config
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+ else
+   export EDITOR='nvim'
+ fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -86,8 +85,6 @@ source ~/dotfiles/.alias
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Add completions for fnm so we can more eaisly switch between Node versions where there is a `.node-version` or `.nvmrc` file present.
-eval "$(fnm env --use-on-cd)"
 
 # pnpm
 export PNPM_HOME="/Users/aarongreenlee/Library/pnpm"
@@ -99,10 +96,16 @@ esac
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/aarongreenlee/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/aarongreenlee/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/aarongreenlee/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/aarongreenlee/google-cloud-sdk/completion.zsh.inc'; fi
+
+# fnm
+eval "$(fnm env --use-on-cd)"
+
+# Setup zoxide
+eval "$(zoxide init zsh)"
+
