@@ -2,6 +2,7 @@
 alias godocs="godoc -http=:6060"
 
 # Run the WTF dashboard
+
 alias dash="cd $GOPATH/src/github.com/senorprogrammer/wtf && make run"
 
 # show a git log with the most recent commits on top
@@ -16,16 +17,11 @@ alias gdlb="git for-each-ref --format '%(refname:short)' refs/heads | grep -v 'm
 # print a list of all of the dirty files without the status (e.g., no A, M, D, etc.)
 alias gscf="git status -s | cut -c4-"
 
-# Via yarn, run rome format and rewrite all fo teh files that have changed
-alias rfcf="yarn rome format --write $(echo $(git status -s | cut -c3- | tr '\n' ' '))"
-
 # Type fewer characters for neovide
 alias nv="neovide"
 
 # Print this file to help me remember all of the aliases
 alias pa="cat ~/dotfiles/.alias | less"
-
-alias gff="git merge --ff-only dev"
 
 # Delete all docker containers
 alias ~ddc="docker rm $(docker ps -aq)"

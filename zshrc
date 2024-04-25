@@ -28,7 +28,7 @@ antigen apply
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -109,3 +109,7 @@ eval "$(fnm env --use-on-cd)"
 # Setup zoxide
 eval "$(zoxide init zsh)"
 
+
+# fnm
+export PATH="/Users/aarongreenlee/Library/Application Support/fnm:$PATH"
+eval "`fnm env`"

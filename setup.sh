@@ -21,9 +21,10 @@ then
     export PATH=$PATH:/opt/homebrew/bin 
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"   
 fi
-
 echo -e "\nUpdating brew...\n"
 brew update
+
+## BEGIN PROGRAM INSTALLATON
 
 echo -e "\nInstalling zoxide for improved terminal navigation\n"
 brew install zoxide
@@ -43,15 +44,23 @@ brew install --cask alt-tab
 
 echo -e "\nInstalling node\n"
 brew install node
+brew install corepack
+
+pnpm add --save-dev --save-exact @biomejs/biome
 
 echo -e "\nInstalling Fast Node Switcher\n"
 curl -fsSL https://fnm.vercel.app/install | bash
 
 echo -e "\nInstalling Go\n"
 brew install golang
+brew install golangci-lint
+brew upgrade golangci-lint
 
 echo -e "\nInstalling Rust\n"
 brew install rust
+
+echo -e "\nInstalling zellij"
+cargo install --locked zellij
 
 # setup the terminal
 sh ~/dotfiles/setup-terminal.sh
